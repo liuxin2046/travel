@@ -17,13 +17,12 @@
 <script>
 export default {
   name: 'HomeWeekend',
+  props: {
+    weekendList: Array
+  },
   data () {
     return {
-      weekendList: [
-        {id:'001',imgUrl:'http://img1.qunarzz.com/sight/source/1811/f3/86173f863bef61.jpg_r_640x214_52b003ac.jpg',title: '京城周末撒欢',desc: '在帝都过周末'},
-        {id:'002',imgUrl:'http://img1.qunarzz.com/sight/source/1811/7e/476589267ebb41.jpg_r_640x214_bf599709.jpg',title: '京城周末撒欢',desc: '在帝都过周末'},
-        {id:'003',imgUrl:'http://img1.qunarzz.com/sight/source/1505/aa/7baaf8a851d221.jpg_r_640x214_1431200f.jpg',title: '京城周末撒欢',desc: '在帝都过周末'}
-      ]
+      
     }
   }
 }
@@ -32,7 +31,6 @@ export default {
 @import '~@/assets/styles/variables.styl'
   .title
     line-height: .94rem
-    margin-top: .2rem
     background: #ddd
     padding-left: .2rem
     font-size: .32rem
