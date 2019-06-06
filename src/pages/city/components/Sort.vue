@@ -1,18 +1,14 @@
 <template>
   <div class="item-list">
-    <div class="item">A</div>
-    <div class="item">B</div>
-    <div class="item">C</div>
-    <div class="item">D</div>
-    <div class="item">E</div>
-    <div class="item">F</div>
-    <div class="item">G</div>
-    <div class="item">H</div>
+    <div class="item" v-for="(item,key) of cities" :key="key">{{key}}</div>
   </div>
 </template>
 <script>
 export default {
-  name: 'CitySort'
+  name: 'CitySort',
+  props: {
+    cities: Object
+  }
 }
 </script>
 <style lang="stylus" scoped>
@@ -31,3 +27,4 @@ export default {
       text-align: center
       color: $bgColor
 </style>
+  

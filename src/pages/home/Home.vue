@@ -36,7 +36,7 @@ export default {
       axios.get('/api/index.json').then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc(res){
-      console.log(res)
+      // console.log(res)
       res = res.data
       if(res.ret && res.data) {
         let {city,swiperList,iconList,recommendList,weekendList} = res.data
