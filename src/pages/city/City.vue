@@ -1,7 +1,7 @@
 <template>
   <div>
     <city-header></city-header>
-    <city-search></city-search>
+    <city-search :cities='cities'></city-search>
     <city-list :hotCities='hotCities' :cities='cities' :letter='letter'></city-list>
     <city-sort :cities='cities' @change='handleLetterChange'></city-sort>
   </div>
@@ -24,7 +24,8 @@ export default {
     return {
     hotCities: [],
     cities: {},
-    letter: ''
+    letter: '',
+    current: '宜春'
     }
   },
   methods: {
