@@ -1,26 +1,28 @@
 <template>
   <div>
     <div class="banner" @click="handleBanner">
-      <img class="banner-img" src="//img1.qunarzz.com/sight/p0/1707/4a/4a392610c3303490a3.water.jpg_600x330_d86beb74.jpg" alt="">
+      <img class="banner-img" :src="bannerImg" alt="">
       <div class="banner-info">
-        <div class="banner-title">徐州乐园加勒比水世界</div>
+        <div class="banner-title">{{sightName}}</div>
         <div class="banner-number">
           <span class="iconfont">&#xe670;</span>39
         </div>
       </div>
     </div>
-    <common-gallary :imgs='imgs' v-show='showGallary' @close='handleGallaryClose'></common-gallary>
+    <common-gallary :imgs='gallaryImgs' v-show='showGallary' @close='handleGallaryClose'></common-gallary>
   </div>
 </template>
 <script>
 import CommonGallary from '../../../common/gallary/Gallary'
 export default {
+  props: {
+    sightName: String,
+    gallaryImgs: Array,
+    bannerImg: String
+  },
   data () {
     return {
-      showGallary: false,
-      imgs: ['//img1.qunarzz.com/sight/p0/1707/4a/4a392610c3303490a3.water.jpg_600x330_d86beb74.jpg',
-        'http://img1.qunarzz.com/tuan/team2/1507/72/a9bc623e643fbf.png_r_800x800_5144804a.png'
-        ]
+      showGallary: false
     }
   },
   components: {
