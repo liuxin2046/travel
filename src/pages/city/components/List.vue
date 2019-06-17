@@ -5,7 +5,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.currentCity}}</div>
           </div>
         </div>
       </div>
@@ -13,14 +13,14 @@
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
           <div class="button-wrapper" v-for="item of hotCities" :key="item.id">
-            <div class="button">{{item.name}}</div>
+            <div class="button" @click="handleClick(item.name)">{{item.name}}</div>
           </div>
         </div>
       </div>
       <div class="area" v-for="(item,key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
-          <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id">{{innerItem.name}}</div>
+          <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id" @click="handleClick(innerItem.name)">{{innerItem.name}}</div>
         </div>
       </div>
     </div>
@@ -28,6 +28,7 @@
 </template>
 <script>
 import Bscroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
   props: {
     hotCities: Array,
@@ -35,8 +36,19 @@ export default {
     letter: String
   },
   name: 'CityList',
-  mounted () {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+  methods: {
+    handleClick (city) {
+      // this.$store.dispatch('changeCity',city)
+      // this.$store.commit('changeCity',city)
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
+  },
+  computed: {
+    ...mapState({
+      currentCity: 'city'
+    })
   },
   watch: {
     letter () {
@@ -46,7 +58,10 @@ export default {
         this.scroll.scrollToElement(element)
       }
     }
-  }
+  },
+   mounted () {
+    this.scroll = new Bscroll(this.$refs.wrapper)
+  },
 }
 </script>
 <style lang="stylus" scoped>
