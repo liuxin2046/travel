@@ -12,8 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': { //当在开发环境，访问/api目录的时候
-        target: 'http://localhost:8080', //访问这个域名端口
-        pathRewrite: {
+        target: 'http://localhost:8080', //访问这个域名端口 联调是调整域名
+        pathRewrite: {  //联调时可以去掉
           '^/api': '/static/mock' //但是吧/api替换成/static/mock
         }
       }
